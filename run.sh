@@ -12,7 +12,7 @@ fi
 mkdir -p logs
 docker run --restart unless-stopped -d --name ${serverName} ${NET_CONFIG} \
     -v `pwd`/conf/:/etc/nginx/conf.d/  \
-    -v `pwd`/logs:/usr/local/openresty/nginx/logs \
+    -v `pwd`/logs/:/var/log/nginx/  \
     nginx-lb
 
 
