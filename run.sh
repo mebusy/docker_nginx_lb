@@ -1,3 +1,5 @@
+# Be careful about the upstream server info in conf/http.conf
+
 serverName="nginx-lb"
 
 docker rm -f ${serverName}
