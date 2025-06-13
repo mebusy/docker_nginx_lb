@@ -10,7 +10,7 @@ if [ "$(uname)" != "Darwin" ]; then
     exit 1
 fi
 
-# ip=`ipconfig getifaddr en0`
+ip=`ipconfig getifaddr en0`
 # host='mebusys-imac'
 # echo "ip: ${ip}", "host: ${host}"
  
@@ -24,6 +24,7 @@ mkdir -p logs
 # add-host  let nginx container can resolve the host name
 # --add-host="${host}:${ip}" \
 docker run --restart unless-stopped -d --name ${serverName} ${NET_CONFIG} \
+    --add-host="host.docker.internal:${ip}" \
     -v `pwd`/conf/:/etc/nginx/conf.d/  \
     -v `pwd`/logs/:/var/log/nginx/  \
     nginx-lb
